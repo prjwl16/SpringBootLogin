@@ -1,35 +1,50 @@
 package com.assgn.signUp.services;
 
+import com.assgn.signUp.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
-import com.assgn.signUp.dao.CLogin;
 import com.assgn.signUp.dao.LoginDao;
-import com.assgn.signUp.entities.User;
+
+import java.util.Optional;
 
 @Service
 public class LoginImpl implements LoginService{
 
 	@Autowired
 	private LoginDao loginDao;
-	@Autowired
-	private CLogin cl;
 	
 	@Override
-	public User getUser(User user) {
-		int ID = user.getId();
-//		String uname= user.getUsername();
-		System.out.println("i am user: "+user);
-		
-		User nuser = loginDao.getById(ID);
-		System.out.println("ruertuuuuuuuuuuuuuuuuuuu"+ nuser);
-		
-		return nuser;
-		
+	public Optional<Users> getUser(Users user) {
+		try{
+			ExampleMatcher customExampleMatcher = ExampleMatcher.matching()
+					.withMatcher("username", ExampleMatcher.GenericPropertyMatchers.exact())
+					.withMatcher("password", ExampleMatcher.GenericPropertyMatchers.exact())
+					.withIgnorePaths("id");
+
+			Example<Users> example = Example.of(user, customExampleMatcher);
+
+			Optional<Users> example1 = loginDao.findOne(example);
+
+			System.out.println("returned user:   " + example1);
+
+			return  example1;
+
+		}catch(Exception e){
+			System.out.println("Exception : "+ e );
+			return null;
+		}
 	}
 	
 	@Override
-	public User setUser(User Nuser) {
-		return loginDao.save(Nuser);
+	public Users setUser(Users Nuser) {
+		try {
+			return loginDao.save(Nuser);
+		}catch (Exception e){
+			System.out.println("Exception: " + e);
+			return null;
+		}
 	}
 }

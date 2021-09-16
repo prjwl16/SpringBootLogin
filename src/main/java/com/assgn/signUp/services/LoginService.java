@@ -1,8 +1,10 @@
 package com.assgn.signUp.services;
 
-import com.assgn.signUp.entities.User;
+import com.assgn.signUp.entities.Users;
+
+import java.util.Optional;
 
 public interface LoginService {
-	public User getUser(User user);
-	public User setUser(User user);
+	public Optional<Users> getUser(Users user);
+	public Users setUser(Users user);
 }
