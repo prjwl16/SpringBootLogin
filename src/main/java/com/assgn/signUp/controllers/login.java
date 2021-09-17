@@ -1,6 +1,6 @@
 package com.assgn.signUp.controllers;
 
-import com.assgn.signUp.entities.*;
+import com.assgn.signUp.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
