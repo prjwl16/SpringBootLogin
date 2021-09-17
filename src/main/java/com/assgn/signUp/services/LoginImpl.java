@@ -23,15 +23,10 @@ public class LoginImpl implements LoginService{
 					.withMatcher("username", ExampleMatcher.GenericPropertyMatchers.exact())
 					.withMatcher("password", ExampleMatcher.GenericPropertyMatchers.exact())
 					.withIgnorePaths("id");
-
 			Example<Users> example = Example.of(user, customExampleMatcher);
-
 			Optional<Users> example1 = loginDao.findOne(example);
-
 			System.out.println("returned user:   " + example1);
-
 			return  example1;
-
 		}catch(Exception e){
 			System.out.println("Exception : "+ e );
 			return null;

@@ -3,7 +3,9 @@ package com.assgn.signUp.entities;
 import javax.persistence.*;
 
 @SuppressWarnings("unused")
+
 @Entity
+
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"id","username"}))
 public class Users {
 
