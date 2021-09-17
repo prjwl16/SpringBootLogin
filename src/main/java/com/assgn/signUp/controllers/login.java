@@ -40,17 +40,20 @@ public class login {
 	}
 
 	@PostMapping("/user/{id}")
-	public ResponseEntity<?> dashboard(@PathVariable int id){
-		System.out.println("ID"+id);
+	public Users dashboard(@PathVariable int id){
+		System.out.println("ID:   "+id);
 		Optional usr = this.loginService.GetUserById(id);
 		try{
-			if(usr.isEmpty())
-				return ResponseEntity.status(404).build();
-			return ResponseEntity.ok(usr);
+			System.out.println("ID:   "+usr);
+			if(usr.isEmpty()) {
+				System.out.println("If---  ");
+				return null;
+			}
+			System.out.println("else---");
+			return usr;
 		}catch(Exception e){
 			System.out.println("Exception : "+e);
 		}
 		return null;
 	}
-
 }

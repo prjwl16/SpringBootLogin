@@ -44,11 +44,11 @@ public class LoginImpl implements LoginService{
 		}
 	}
 
-	public Optional<Users> GetUserById(int id){
+	public Users GetUserById(int id){
 		try{
 			Users nuser = loginDao.getById(id);
-			System.out.println("rrr"+nuser);
-			return Optional.of(nuser);
+			System.out.println("rrr:   "+nuser);
+			return nuser;
 		}catch(Exception e){
 			System.out.println("Exception E: "+e);
 			return null;
