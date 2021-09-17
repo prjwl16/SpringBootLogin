@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface LoginService {
 	public Optional<Users> getUser(Users user);
 	public Users setUser(Users user);
+	public Optional<Users> GetUserById(int id);
 }

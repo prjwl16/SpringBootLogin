@@ -23,13 +23,9 @@ public class LoginImpl implements LoginService{
 					.withMatcher("username", ExampleMatcher.GenericPropertyMatchers.exact())
 					.withMatcher("password", ExampleMatcher.GenericPropertyMatchers.exact())
 					.withIgnorePaths("id");
-
 			Example<Users> example = Example.of(user, customExampleMatcher);
-
 			Optional<Users> example1 = loginDao.findOne(example);
-
 			System.out.println("returned user:   " + example1);
-
 			return  example1;
 
 		}catch(Exception e){
@@ -44,6 +40,17 @@ public class LoginImpl implements LoginService{
 			return loginDao.save(Nuser);
 		}catch (Exception e){
 			System.out.println("Exception: " + e);
+			return null;
+		}
+	}
+
+	public Optional<Users> GetUserById(int id){
+		try{
+			Users nuser = loginDao.getById(id);
+			System.out.println("rrr"+nuser);
+			return Optional.of(nuser);
+		}catch(Exception e){
+			System.out.println("Exception E: "+e);
 			return null;
 		}
 	}
