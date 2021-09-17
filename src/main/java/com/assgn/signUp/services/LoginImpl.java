@@ -1,6 +1,6 @@
 package com.assgn.signUp.services;
 
-import com.assgn.signUp.entities.Users;
+import com.assgn.signUp.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
