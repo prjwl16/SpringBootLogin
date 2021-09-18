@@ -25,6 +25,8 @@ public class Users {
         this.id = id;
         this.username = username;
         this.password = password;
+
+        System.out.println("Users called ");
     }
 
     public int getId() {

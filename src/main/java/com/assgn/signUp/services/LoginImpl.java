@@ -18,6 +18,8 @@ public class LoginImpl implements LoginService{
 	
 	@Override
 	public Optional<Users> getUser(Users user) {
+		System.out.println("IN HERE "+user);
+		System.out.println("login dao "+loginDao);
 		try{
 			ExampleMatcher customExampleMatcher = ExampleMatcher.matching()
 					.withMatcher("username", ExampleMatcher.GenericPropertyMatchers.exact())
