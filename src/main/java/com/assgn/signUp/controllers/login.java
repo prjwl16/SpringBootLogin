@@ -22,13 +22,10 @@ public class login {
 	@PostMapping("/login")
 	public ResponseEntity<Optional> signIn(@RequestBody Users user) {
 		System.out.println("Request "+ user);
-
 		Optional usr = this.loginService.getUser(user);
-
 		System.out.println("returned user: "+usr.isEmpty());
-
 		if(usr.isEmpty()){
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(usr);
 	}
@@ -40,14 +37,14 @@ public class login {
 	}
 
 	@PostMapping("/user/{id}")
-	public Users dashboard(@PathVariable int id){
+	public Optional <Users> dashboard(@PathVariable int id){
 		System.out.println("ID:   "+id);
 		Optional usr = this.loginService.GetUserById(id);
 		try{
 			System.out.println("ID:   "+usr);
 			if(usr.isEmpty()) {
 				System.out.println("If---  ");
-				return null;
+				return Optional.empty();
 			}
 			System.out.println("else---");
 			return usr;

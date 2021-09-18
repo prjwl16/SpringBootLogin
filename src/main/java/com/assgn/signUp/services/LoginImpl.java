@@ -30,7 +30,7 @@ public class LoginImpl implements LoginService{
 
 		}catch(Exception e){
 			System.out.println("Exception : "+ e );
-			return null;
+			return Optional.empty();
 		}
 	}
 	
@@ -44,14 +44,14 @@ public class LoginImpl implements LoginService{
 		}
 	}
 
-	public Users GetUserById(int id){
+	public Optional <Users> GetUserById(int id){
 		try{
 			Users nuser = loginDao.getById(id);
 			System.out.println("rrr:   "+nuser);
-			return nuser;
+			return Optional.of(nuser);
 		}catch(Exception e){
 			System.out.println("Exception E: "+e);
-			return null;
+			return Optional.empty();
 		}
 	}
 }
