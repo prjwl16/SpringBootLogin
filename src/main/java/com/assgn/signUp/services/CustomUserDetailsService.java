@@ -15,7 +15,8 @@ import java.util.Optional;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     Users user = new Users();
-    LoginImpl loginimp = new LoginImpl();
+    @Autowired
+    private LoginService loginService;
     String un;
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -30,8 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public void setUser(String uname, String pass) {
         Users u = new Users(0,uname,pass);
-        Optional usr = loginimp.getUser(u);
-
+        Optional usr = loginService.getUser(u);
         if(usr.isPresent()){
             this.user.setUsername(uname);
             this.user.setPassword(pass);

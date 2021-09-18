@@ -14,8 +14,8 @@ import java.util.Optional;
 public class LoginImpl implements LoginService{
 
 	@Autowired
-	private LoginDao loginDao;
-	
+	public LoginDao loginDao;
+
 	@Override
 	public Optional<Users> getUser(Users user) {
 		System.out.println("IN HERE "+user);

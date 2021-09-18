@@ -38,7 +38,7 @@ public class Jwt {
             this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
         }catch (Exception E){
             E.printStackTrace();
-            throw new Exception("Bad Credential");
+            return ResponseEntity.notFound().build();
         }
         //user authenticated
         UserDetails userDetails =  this.customUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
