@@ -27,7 +27,6 @@ public class LoginImpl implements LoginService{
 			Optional<Users> example1 = loginDao.findOne(example);
 			System.out.println("returned user:   " + example1);
 			return  example1;
-
 		}catch(Exception e){
 			System.out.println("Exception : "+ e );
 			return Optional.empty();
