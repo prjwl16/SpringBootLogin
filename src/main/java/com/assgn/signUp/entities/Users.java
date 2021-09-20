@@ -1,8 +1,12 @@
 package com.assgn.signUp.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 
 @SuppressWarnings("unused")
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
 @Entity
 

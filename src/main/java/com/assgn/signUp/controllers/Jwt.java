@@ -1,6 +1,5 @@
 package com.assgn.signUp.controllers;
 
-import com.assgn.signUp.entities.Users;
 import com.assgn.signUp.helper.JwtUtil;
 import com.assgn.signUp.model.JwtRequest;
 import com.assgn.signUp.model.JwtResponse;
@@ -27,14 +26,8 @@ public class Jwt {
 
 
     @PostMapping("/token")
-    public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
-        System.out.println("JWT Request"+jwtRequest);
-
-        String uname = jwtRequest.getUsername();
-        String pass = jwtRequest.getPassword();
-
+    public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest){
         try {
-            this.customUserDetailsService.setUser(uname, pass);
             this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
         }catch (Exception E){
             E.printStackTrace();
@@ -43,7 +36,6 @@ public class Jwt {
         //user authenticated
         UserDetails userDetails =  this.customUserDetailsService.loadUserByUsername(jwtRequest.getUsername());
         String token = this.jwtUtil.generateToken(userDetails);
-        System.out.println("JWT"+token);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 }
