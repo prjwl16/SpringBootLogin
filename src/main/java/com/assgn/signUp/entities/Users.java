@@ -1,8 +1,12 @@
 package com.assgn.signUp.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 
 @SuppressWarnings("unused")
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
 @Entity
 
@@ -25,6 +29,8 @@ public class Users {
         this.id = id;
         this.username = username;
         this.password = password;
+
+        System.out.println("Users called ");
     }
 
     public int getId() {

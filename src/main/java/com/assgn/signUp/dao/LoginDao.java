@@ -6,4 +6,6 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LoginDao extends JpaRepository<Users, Integer>,QueryByExampleExecutor <Users>{ }
+public interface LoginDao extends JpaRepository<Users, Integer>,QueryByExampleExecutor <Users>{
+    public  Users findByUsername(String username);
+}
